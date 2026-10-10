@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Opportunity Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Research Opportunity Portal</h1>
+    <p>Browse and manage research opportunities offered by faculty</p>
+  </header>
+
+  <main class="container">
+    <!-- Success and error messages appear here -->
+    <div id="message" class="message" hidden></div>
+
+    <!-- Section 1: list of all opportunities -->
+    <section id="list-section">
+      <h2>All Opportunities</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Research Area</th>
+              <th>Faculty</th>
+              <th>Positions</th>
+              <th>Deadline</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="opportunity-list"></tbody>
+        </table>
+      </div>
+      <p id="empty-text" hidden>No opportunities found.</p>
+    </section>
+
+    <!-- Section 2: details of one opportunity -->
+    <section id="details-section" hidden>
+      <h2>Opportunity Details</h2>
+      <div id="details-content"></div>
+      <button id="details-back-button" class="secondary">Back to List</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

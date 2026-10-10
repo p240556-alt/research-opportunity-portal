@@ -1,0 +1,215 @@
+/* Simple university-project style */
+
+[hidden] {
+  display: none !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #eef1f6;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* ----- Header ----- */
+.site-header {
+  background: #1f3a5f;
+  color: white;
+  padding: 22px 20px;
+  text-align: center;
+}
+
+.site-header h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+}
+
+.site-header p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 25px auto;
+  padding: 0 15px;
+}
+
+/* ----- Cards ----- */
+section {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+}
+
+section h2 {
+  margin-top: 0;
+  color: #1f3a5f;
+  font-size: 20px;
+}
+
+/* ----- Table ----- */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px 8px;
+  text-align: left;
+  font-size: 14px;
+  border-bottom: 1px solid #e1e5ec;
+}
+
+th {
+  background: #1f3a5f;
+  color: white;
+}
+
+tbody tr:nth-child(even) {
+  background: #f7f9fc;
+}
+
+tbody tr:hover {
+  background: #eaf1fb;
+}
+
+/* ----- Buttons ----- */
+button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  background: #2f5d9e;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #244a7e;
+}
+
+button.secondary {
+  background: #6c757d;
+}
+
+button.secondary:hover {
+  background: #565e64;
+}
+
+button.warning {
+  background: #d98200;
+}
+
+button.warning:hover {
+  background: #b36b00;
+}
+
+button.danger {
+  background: #c0392b;
+}
+
+button.danger:hover {
+  background: #992d22;
+}
+
+/* ----- Status badges ----- */
+.status-open,
+.status-closed {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-open {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-closed {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+/* ----- Messages ----- */
+.message {
+  padding: 10px 14px;
+  margin-bottom: 15px;
+  border: 1px solid;
+  border-radius: 6px;
+}
+
+.message.success {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #155724;
+}
+
+.message.error {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #721c24;
+}
+
+/* ----- Details view ----- */
+#details-content p {
+  margin: 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+#details-content strong {
+  display: inline-block;
+  min-width: 170px;
+  color: #1f3a5f;
+}
+
+/* ----- Form (used in the next stage) ----- */
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #aab;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+textarea {
+  min-height: 90px;
+}
+
+.form-buttons {
+  margin-top: 18px;
+}
+
+@media (max-width: 600px) {
+  #details-content strong {
+    display: block;
+  }
+}
