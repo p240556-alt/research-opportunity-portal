@@ -1,0 +1,302 @@
+{
+  "info": {
+    "_postman_id": "a1a9ba99-7dab-43b7-9aac-6cdb8a95c040",
+    "name": "Research Portal API Tests",
+    "description": "### Welcome to Postman! This is your first collection.\n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests  \n• Test your API in real-world scenarios  \n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58842991",
+    "_collection_link": "https://go.postman.co/collection/58842991-a1a9ba99-7dab-43b7-9aac-6cdb8a95c040?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create opportunity 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create opportunity 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create opportunity 3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get One",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Opportunity 1",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Close opportunity 2",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete opportunity 3",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get deleted Data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalid Data",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Deep Learning for Medical Image Analysis\",\r\n  \"description\": \"Develop and evaluate convolutional neural networks to detect abnormalities in chest X-ray images.\",\r\n  \"research_area\": \"Artificial Intelligence\",\r\n  \"faculty_name\": \"Dr. Ayesha Khan\",\r\n  \"department\": \"Computer Science\",\r\n  \"required_skills\": \"Python, PyTorch, basic machine learning\",\r\n  \"available_positions\": 2,\r\n  \"application_deadline\": \"2026-12-15\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/opportunities",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "opportunities"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
