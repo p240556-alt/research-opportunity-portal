@@ -11,6 +11,7 @@ const pool = mysql.createPool({
   database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
+  dateStrings: true, // return DATE columns as plain text like "2026-12-15"
 });
 
 module.exports = pool;
