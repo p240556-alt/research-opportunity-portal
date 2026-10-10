@@ -3,12 +3,32 @@
 
 // ---------- Find the page elements we need ----------
 const messageBox = document.getElementById('message');
+
 const listSection = document.getElementById('list-section');
 const detailsSection = document.getElementById('details-section');
+const formSection = document.getElementById('form-section');
+
 const opportunityList = document.getElementById('opportunity-list');
 const emptyText = document.getElementById('empty-text');
 const detailsContent = document.getElementById('details-content');
+
+const newButton = document.getElementById('new-button');
 const detailsBackButton = document.getElementById('details-back-button');
+const cancelButton = document.getElementById('cancel-button');
+const saveButton = document.getElementById('save-button');
+
+const form = document.getElementById('opportunity-form');
+const formErrors = document.getElementById('form-errors');
+
+// The form fields. Each id matches the field name used by the API.
+const TEXT_FIELDS = [
+  { name: 'title', label: 'Research title', max: 200 },
+  { name: 'description', label: 'Description', max: 5000 },
+  { name: 'research_area', label: 'Research area', max: 100 },
+  { name: 'faculty_name', label: 'Faculty name', max: 100 },
+  { name: 'department', label: 'Department', max: 100 },
+  { name: 'required_skills', label: 'Required skills', max: 255 },
+];
 
 // ---------- Helper functions ----------
 
@@ -33,6 +53,30 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+// Shows only the list section
+function showList() {
+  detailsSection.hidden = true;
+  formSection.hidden = true;
+  listSection.hidden = false;
+  window.scrollTo(0, 0);
+}
+
+// Shows a list of problems above the form
+function showFormErrors(errors) {
+  formErrors.innerHTML = errors
+    .map(function (error) {
+      return '&bull; ' + escapeHtml(error);
+    })
+    .join('<br>');
+  formErrors.hidden = false;
+  window.scrollTo(0, 0);
+}
+
+function clearFormErrors() {
+  formErrors.hidden = true;
+  formErrors.innerHTML = '';
 }
 
 // ---------- Show the list ----------
@@ -92,12 +136,103 @@ async function showDetails(id) {
       '<p><strong>Status:</strong> <span class="status-' + data.status.toLowerCase() + '">' + data.status + '</span></p>';
 
     listSection.hidden = true;
+    formSection.hidden = true;
     detailsSection.hidden = false;
+    window.scrollTo(0, 0);
   } catch (error) {
     console.error(error);
     showMessage('Could not reach the server.', 'error');
   }
 }
+
+// ---------- The form ----------
+
+// Opens an empty form
+function showForm() {
+  form.reset();
+  clearFormErrors();
+  listSection.hidden = true;
+  detailsSection.hidden = true;
+  formSection.hidden = false;
+  window.scrollTo(0, 0);
+}
+
+// Reads the form fields into one object
+function readForm() {
+  const data = {};
+  for (const field of TEXT_FIELDS) {
+    data[field.name] = document.getElementById(field.name).value.trim();
+  }
+
+  const positionsText = document.getElementById('available_positions').value.trim();
+  data.available_positions = positionsText === '' ? NaN : Number(positionsText);
+
+  data.application_deadline = document.getElementById('application_deadline').value;
+  data.status = document.getElementById('status').value;
+  return data;
+}
+
+// Checks the data and returns a list of problems (empty list = everything is fine)
+function validateForm(data) {
+  const errors = [];
+
+  for (const field of TEXT_FIELDS) {
+    const value = data[field.name];
+    if (value === '') {
+      errors.push(field.label + ' is required.');
+    } else if (value.length > field.max) {
+      errors.push(field.label + ' must be at most ' + field.max + ' characters.');
+    }
+  }
+
+  if (!Number.isInteger(data.available_positions) || data.available_positions < 0) {
+    errors.push('Available positions must be a whole number (0 or more).');
+  }
+
+  if (data.application_deadline === '') {
+    errors.push('Application deadline is required.');
+  }
+
+  return errors;
+}
+
+// Runs when the user clicks "Save Opportunity"
+form.addEventListener('submit', async function (event) {
+  event.preventDefault(); // stop the browser from reloading the page
+  clearFormErrors();
+
+  const data = readForm();
+  const errors = validateForm(data);
+  if (errors.length > 0) {
+    showFormErrors(errors);
+    return;
+  }
+
+  saveButton.disabled = true; // prevents double clicks while saving
+  try {
+    const response = await fetch('/api/opportunities', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+
+    if (response.status === 201) {
+      showList();
+      showMessage('Opportunity created successfully.', 'success');
+      await loadOpportunities();
+    } else if (response.status === 400) {
+      showFormErrors(result.details || [result.error]);
+    } else {
+      showFormErrors([result.error || 'Something went wrong on the server.']);
+    }
+  } catch (error) {
+    console.error(error);
+    showFormErrors(['Could not reach the server. Is it running?']);
+  } finally {
+    saveButton.disabled = false;
+  }
+});
 
 // ---------- Button clicks ----------
 
@@ -112,10 +247,9 @@ opportunityList.addEventListener('click', function (event) {
   }
 });
 
-detailsBackButton.addEventListener('click', function () {
-  detailsSection.hidden = true;
-  listSection.hidden = false;
-});
+newButton.addEventListener('click', showForm);
+detailsBackButton.addEventListener('click', showList);
+cancelButton.addEventListener('click', showList);
 
 // ---------- Start ----------
 loadOpportunities();

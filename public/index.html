@@ -18,7 +18,10 @@
 
     <!-- Section 1: list of all opportunities -->
     <section id="list-section">
-      <h2>All Opportunities</h2>
+      <div class="list-header">
+        <h2>All Opportunities</h2>
+        <button id="new-button">+ Add New Opportunity</button>
+      </div>
       <div class="table-wrap">
         <table>
           <thead>
@@ -44,6 +47,51 @@
       <h2>Opportunity Details</h2>
       <div id="details-content"></div>
       <button id="details-back-button" class="secondary">Back to List</button>
+    </section>
+
+    <!-- Section 3: form to add an opportunity -->
+    <section id="form-section" hidden>
+      <h2>Add New Opportunity</h2>
+
+      <!-- Validation problems are listed here -->
+      <div id="form-errors" class="message error" hidden></div>
+
+      <form id="opportunity-form" novalidate>
+        <label for="title">Research title</label>
+        <input type="text" id="title" maxlength="200">
+
+        <label for="description">Description</label>
+        <textarea id="description" maxlength="5000"></textarea>
+
+        <label for="research_area">Research area</label>
+        <input type="text" id="research_area" maxlength="100">
+
+        <label for="faculty_name">Faculty name</label>
+        <input type="text" id="faculty_name" maxlength="100">
+
+        <label for="department">Department</label>
+        <input type="text" id="department" maxlength="100">
+
+        <label for="required_skills">Required skills</label>
+        <input type="text" id="required_skills" maxlength="255" placeholder="For example: Python, SQL">
+
+        <label for="available_positions">Available positions</label>
+        <input type="number" id="available_positions" min="0" step="1">
+
+        <label for="application_deadline">Application deadline</label>
+        <input type="date" id="application_deadline">
+
+        <label for="status">Status</label>
+        <select id="status">
+          <option value="Open">Open</option>
+          <option value="Closed">Closed</option>
+        </select>
+
+        <div class="form-buttons">
+          <button type="submit" id="save-button">Save Opportunity</button>
+          <button type="button" id="cancel-button" class="secondary">Cancel</button>
+        </div>
+      </form>
     </section>
   </main>
 

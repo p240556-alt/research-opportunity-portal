@@ -213,3 +213,16 @@ textarea {
     display: block;
   }
 }
+/* ----- List header with the Add button ----- */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.list-header h2 {
+  margin: 0;
+}
