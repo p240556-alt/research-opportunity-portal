@@ -1,0 +1,10 @@
+# Libraries downloaded by npm (huge, and anyone can re-download them)
+node_modules/
+
+# Private settings, such as the database password
+.env
+
+# Windows and editor clutter
+Thumbs.db
+.vscode/
+*.log
