@@ -160,6 +160,79 @@ app.get('/api/opportunities/:id', async (req, res) => {
     res.status(500).json({ error: 'Server error while fetching the opportunity' });
   }
 });
+// UPDATE: replace the data of an existing opportunity
+app.put('/api/opportunities/:id', async (req, res) => {
+  try {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      return res.status(400).json({ error: 'id must be a whole number' });
+    }
+
+    const data = req.body || {};
+    const errors = validateOpportunity(data);
+    if (errors.length > 0) {
+      return res.status(400).json({ error: 'Validation failed', details: errors });
+    }
+
+    // Make sure the opportunity exists
+    const [existing] = await pool.query('SELECT * FROM opportunities WHERE id = ?', [id]);
+    if (existing.length === 0) {
+      return res.status(404).json({ error: 'Opportunity not found' });
+    }
+
+    // If no status was sent, keep the current one
+    const status = data.status || existing[0].status;
+
+    await pool.query(
+      `UPDATE opportunities
+       SET title = ?, description = ?, research_area = ?, faculty_name = ?,
+           department = ?, required_skills = ?, available_positions = ?,
+           application_deadline = ?, status = ?
+       WHERE id = ?`,
+      [
+        data.title.trim(),
+        data.description.trim(),
+        data.research_area.trim(),
+        data.faculty_name.trim(),
+        data.department.trim(),
+        data.required_skills.trim(),
+        data.available_positions,
+        data.application_deadline,
+        status,
+        id,
+      ]
+    );
+
+    // Send back the updated row
+    const [rows] = await pool.query('SELECT * FROM opportunities WHERE id = ?', [id]);
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error while updating the opportunity' });
+  }
+});
+
+// DELETE: remove an opportunity
+app.delete('/api/opportunities/:id', async (req, res) => {
+  try {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      return res.status(400).json({ error: 'id must be a whole number' });
+    }
+
+    const [existing] = await pool.query('SELECT id FROM opportunities WHERE id = ?', [id]);
+    if (existing.length === 0) {
+      return res.status(404).json({ error: 'Opportunity not found' });
+    }
+
+    await pool.query('DELETE FROM opportunities WHERE id = ?', [id]);
+    res.status(200).json({ message: 'Opportunity deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error while deleting the opportunity' });
+  }
+});
+
 
 // ---------- Start the server ----------
 
