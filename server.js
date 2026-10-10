@@ -232,7 +232,21 @@ app.delete('/api/opportunities/:id', async (req, res) => {
     res.status(500).json({ error: 'Server error while deleting the opportunity' });
   }
 });
+// ---------- Error handling ----------
 
+// Any /api address that did not match a route above: reply with JSON, not an HTML page
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'API route not found' });
+});
+
+// Catches errors that were not handled inside a route (for example, broken JSON)
+app.use((err, req, res, next) => {
+  if (err.type === 'entity.parse.failed') {
+    return res.status(400).json({ error: 'Request body is not valid JSON' });
+  }
+  console.error(err);
+  res.status(500).json({ error: 'Unexpected server error' });
+});
 
 // ---------- Start the server ----------
 
