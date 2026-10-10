@@ -124,6 +124,42 @@ app.post('/api/opportunities', async (req, res) => {
     res.status(500).json({ error: 'Server error while creating the opportunity' });
   }
 });
+// Turns the :id from the URL into a number. Returns null if it is not a whole number.
+function parseId(value) {
+  return /^\d+$/.test(value) ? Number(value) : null;
+}
+
+// READ ALL: get every opportunity
+app.get('/api/opportunities', async (req, res) => {
+  try {
+    const [rows] = await pool.query('SELECT * FROM opportunities ORDER BY id ASC');
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error while fetching opportunities' });
+  }
+});
+
+// READ ONE: get a single opportunity by id
+app.get('/api/opportunities/:id', async (req, res) => {
+  try {
+    const id = parseId(req.params.id);
+    if (id === null) {
+      return res.status(400).json({ error: 'id must be a whole number' });
+    }
+
+    const [rows] = await pool.query('SELECT * FROM opportunities WHERE id = ?', [id]);
+
+    if (rows.length === 0) {
+      return res.status(404).json({ error: 'Opportunity not found' });
+    }
+
+    res.status(200).json(rows[0]);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error while fetching the opportunity' });
+  }
+});
 
 // ---------- Start the server ----------
 
